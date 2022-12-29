@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ipcalculator.model.Ip;
+import br.com.ipcalculator.utils.IpUtils;
 
 
 @RestController
@@ -25,9 +26,7 @@ public class CalculoController {
 
     @PostMapping("/calcular")
     public void recebeIp(@RequestBody Map<String, String> payload) {
-        
         ip.setIpNumbers(payload.get("ip"));
-        System.out.println(ip.getIpNumbers());
-        ip.getDecimals(ip.getIpNumbers());
+        IpUtils.convertToBinary(ip);
     }
 }

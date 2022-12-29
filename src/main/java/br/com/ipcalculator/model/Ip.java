@@ -23,8 +23,8 @@ public class Ip {
         this.ipNumbers = ipNumbers;
     }
 
-    public List<Integer> getDecimals(String ip) {
-        String[] ipSessions = ip.split("\\.");
+    public List<Integer> getDecimals() {
+        String[] ipSessions = getIpNumbers().split("\\.");
         decimals = new ArrayList<>();
         Arrays.asList(ipSessions).forEach(session -> decimals.add(Integer.parseInt(session)));
         return decimals;

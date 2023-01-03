@@ -2,22 +2,24 @@ package br.com.ipcalculator.controller;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ipcalculator.model.Ip;
-import br.com.ipcalculator.utils.IpUtils;
+import br.com.ipcalculator.services.CalculoService;
 
 
 @RestController
 @RequestMapping("/api")
 public class CalculoController {
-
-    private Ip ip = new Ip();
+    
+    @Autowired
+    private CalculoService calculoService;
 
     @GetMapping("/teste")
     public HttpStatus home() {
@@ -25,11 +27,8 @@ public class CalculoController {
     }
 
     @PostMapping("/calcular")
-    public void recebeIp(@RequestBody Map<String, String> payload) {
-        ip.setIpNumbers(payload.get("ip"));
-        ip.setMask(payload.get("mask"));
-        IpUtils.convertToBinary(ip);
-        IpUtils.validateIpClass(ip);
+    public ResponseEntity recebeIp(@RequestBody Map<String, String> payload) {
+        return new ResponseEntity<>(calculoService.validarDadosRecebidos(payload), HttpStatus.OK);
     }
 
     

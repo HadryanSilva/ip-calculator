@@ -7,12 +7,14 @@ import java.util.List;
 
 public class Ip {
     private String ipNumbers;
-    private List<Integer> decimals;
+    private List<Integer> ipDecimals;
+    private String mask;
 
     public Ip() {}
 
-    public Ip(String ipNumbers) {
+    public Ip(String ipNumbers, String mask) {
         this.ipNumbers = ipNumbers;
+        this.mask = mask;
     }
 
     public String getIpNumbers() {
@@ -24,11 +26,22 @@ public class Ip {
     }
 
     public List<Integer> getDecimals() {
-        String[] ipSessions = getIpNumbers().split("\\.");
-        decimals = new ArrayList<>();
-        Arrays.asList(ipSessions).forEach(session -> decimals.add(Integer.parseInt(session)));
-        return decimals;
+        final String[] ipOctets = ipNumbers.split("\\.");
+        ipDecimals = new ArrayList<>();
+        Arrays.asList(ipOctets).forEach(octet -> ipDecimals.add(Integer.parseInt(octet)));
+        return ipDecimals;
     }
 
+    public void setDecimals(List<Integer> ipDecimals) {
+        this.ipDecimals = ipDecimals;
+    }
+
+    public String getMask() {
+        return mask;
+    }
+
+    public void setMask(String mask) {
+        this.mask = mask;
+    }
     
 }

@@ -27,6 +27,10 @@ public class CalculoController {
     @PostMapping("/calcular")
     public void recebeIp(@RequestBody Map<String, String> payload) {
         ip.setIpNumbers(payload.get("ip"));
+        ip.setMask(payload.get("mask"));
         IpUtils.convertToBinary(ip);
+        IpUtils.validateIpClass(ip);
     }
+
+    
 }

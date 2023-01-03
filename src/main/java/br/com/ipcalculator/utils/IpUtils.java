@@ -2,6 +2,7 @@ package br.com.ipcalculator.utils;
 
 import java.util.Arrays;
 
+import br.com.ipcalculator.enums.IP_ENUM;
 import br.com.ipcalculator.model.Ip;
 
 public class IpUtils {
@@ -20,22 +21,22 @@ public class IpUtils {
 
         switch(classCounter) {
             case 1:
-                System.out.println("Class A");
-                result = "A";
+                System.out.println("IP de classe A");
+                result = IP_ENUM.CLASSE_A.getDescricao();
                 break;
             case 2:
-                System.out.println("Class B");
-                result = "B";
+                System.out.println("IP de classe B");
+                result = IP_ENUM.CLASSE_B.getDescricao();
                 break;
             case 3:
-                System.out.println("Class C");
-                result = "C";
+                System.out.println("IP de classe C");
+                result = IP_ENUM.CLASSE_C.getDescricao();
                 break;
             default:
                 throw new RuntimeException("Não foi possível identificar a classe do IP");
         }
         classCounter = 0;
-        return "Class: " + result;
+        return result;
     }
 
 }

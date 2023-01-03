@@ -8,6 +8,15 @@ public class Ip implements Serializable {
     private String ipAdress;
     private String mask;
     private String maskBinarie;
+    private String classe;
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
 
     public Ip(){}
     

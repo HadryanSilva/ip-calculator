@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import br.com.ipcalculator.model.Ip;
+import br.com.ipcalculator.utils.IpUtils;
 
 @Service
 public class CalculoService {    
@@ -17,6 +18,7 @@ public class CalculoService {
         String mask = payload.get("mask");
         Ip ip = new Ip(adress, mask);
         ip.setMaskBinarie(convertToBinary(mask));
+        ip.setClasse(IpUtils.validateIpClass(ip));
 
         return ip;
 

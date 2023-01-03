@@ -1,20 +1,12 @@
 package br.com.ipcalculator.utils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import br.com.ipcalculator.model.Ip;
 
 public class IpUtils {
 
     private static int classCounter = 0;
-
-    public static List<String> convertToBinary(Ip ip) {
-        List<String> ipBinary = new ArrayList<>();
-        ip.getDecimals().forEach(octet -> ipBinary.add(Integer.toBinaryString(octet)));
-        return ipBinary;
-    }
 
     public static String validateIpClass(Ip ip) {
         String [] maskOctets = ip.getMask().split("\\.");
